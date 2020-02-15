@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container">
         <InputMenu @timeSubmit="onTimeSubmit"/>
         <Timer :time_pattern="timePattern"/>
     </div>

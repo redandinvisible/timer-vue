@@ -16,5 +16,7 @@
 </script>
 
 <style scoped>
-
+    div {
+        margin: 20px
+    }
 </style>
