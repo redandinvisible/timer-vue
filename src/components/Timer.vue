@@ -1,9 +1,15 @@
 <template>
     <div>
-        <div class="row">
-            <div>{{ minutes }}</div>
-            <div>:</div>
-            <div>{{ seconds }}</div>
+        <div id="counter-wrapper">
+            <div class="col-xs-12">
+                <div id="timer" class="timer-undertime">
+                    <div id="counter-container" class="row">
+                        <div>{{ minutes }}</div>
+                        <div>:</div>
+                        <div>{{ seconds }}</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <TimerButtons @buttonClicked="onTimerButtonClicked"/>
     </div>
@@ -70,5 +76,12 @@
 </script>
 
 <style scoped>
+    #counter-wrapper {
+        font-family: "Helvetica Monospaced W01", "Lucida Console", Monaco, monospace;
+        color: #ffab00;
+        font-size: 50vmin;
+        display: flex;
+        justify-content: center
+    }
 
 </style>
