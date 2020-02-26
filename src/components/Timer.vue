@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div id="counter-wrapper">
+    <div class="content">
+        <div class="counter-wrapper">
             <div class="col-xs-12">
                 <div id="timer" class="timer-undertime">
                     <div id="counter-container" class="row">
@@ -68,13 +68,10 @@
                 }
             },
             startCountdown() {
-                // eslint-disable-next-line no-console
-                console.log("startCountdown: " + this.timeRemaining);
                 this.$timer.start('countdown');
             },
             pauseCountdown() {
-                // eslint-disable-next-line no-console
-                return console.log("pauseCountdown");
+                this.$timer.stop('countdown');
             },
             restartCountdown() {
                 // eslint-disable-next-line no-console
@@ -98,12 +95,17 @@
 </script>
 
 <style scoped>
-    #counter-wrapper {
+    .counter-wrapper {
         font-family: "Helvetica Monospaced W01", "Lucida Console", Monaco, monospace;
         color: #ffab00;
         font-size: 50vmin;
-        display: flex;
-        justify-content: center
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+    .content {
+        height: 100vh;
     }
 
 </style>

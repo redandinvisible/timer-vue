@@ -1,5 +1,5 @@
 <template>
-    <div id="buttons-wrapper">
+    <div class="buttons-wrapper">
         <div class="col-xs-12">
             <div class="row">
                 <div @click="onClick($event)" value="play"><img :src="'./images/play.svg'" id="play" width="50" height="50"></div>
@@ -22,8 +22,9 @@
 </script>
 
 <style scoped>
-    #buttons-wrapper {
+    .buttons-wrapper {
         display: flex;
         justify-content: flex-end;
+        height: 10vh;
     }
 </style>

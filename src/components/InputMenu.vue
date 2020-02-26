@@ -17,6 +17,6 @@
 
 <style scoped>
     div {
-        margin: 20px
+        margin: 20px;
     }
 </style>

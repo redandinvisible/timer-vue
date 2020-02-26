@@ -1,7 +1,7 @@
 <template>
     <div class="container-fluid">
-        <InputMenu @timeSubmit="onTimeSubmit"/>
-        <Timer :time_pattern="timePattern"/>
+        <InputMenu v-show="displayTimeInput" @timeSubmit="onTimeSubmit"/>
+        <Timer v-show="!displayTimeInput" :time_pattern="timePattern"/>
     </div>
 </template>
 
@@ -17,12 +17,14 @@
         },
         data() {
             return {
-                timePattern: ""
+                timePattern: "",
+                displayTimeInput: true
             };
         },
         methods: {
             onTimeSubmit(timePattern) {
-                this.timePattern = timePattern
+                this.timePattern = timePattern;
+                this.displayTimeInput = false;
             }
         }
     };
@@ -31,9 +33,11 @@
 <style>
     html, body {
         background-color: black;
+        height: 100vh;
     }
     .container-fluid {
         background-color: black;
+        height: 100vh;
         margin: 0;
     }
     @font-face {
