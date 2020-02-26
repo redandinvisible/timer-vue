@@ -6,7 +6,7 @@
                     <div id="counter-container" class="row">
                         <div>{{ minutes }}</div>
                         <div>:</div>
-                        <div>{{ seconds }}</div>
+                        <div>{{ seconds | LpadSeconds }}</div>
                     </div>
                 </div>
             </div>
@@ -17,6 +17,11 @@
 
 <script>
     import TimerButtons from "./TimerButtons";
+    import {mixin as VueTimers} from 'vue-timers'
+    import {modulo_seconds} from "../util/number";
+    import LpadSeconds from '../filters/LpadSeconds';
+
+    let one_second = 1000;
 
     export default {
         name: "Timer",
@@ -29,8 +34,15 @@
         data() {
             return {
                 minutes: "",
-                seconds: ""
+                seconds: "",
             }
+        },
+        mixins: [VueTimers],
+        timers: {
+            countdown: { time: one_second, repeat: true }
+        },
+        filters: {
+            LpadSeconds
         },
         watch: {
             time_pattern: {
@@ -57,7 +69,8 @@
             },
             startCountdown() {
                 // eslint-disable-next-line no-console
-                return console.log("startCountdown");
+                console.log("startCountdown: " + this.timeRemaining);
+                this.$timer.start('countdown');
             },
             pauseCountdown() {
                 // eslint-disable-next-line no-console
@@ -70,6 +83,15 @@
             timesUp() {
                 // eslint-disable-next-line no-console
                 return console.log("time's up!");
+            },
+            countdown() {
+                this.seconds = modulo_seconds(this.seconds - 1);
+                if (this.seconds == 59 && this.minutes > 0) {
+                    this.minutes -= 1;
+                }
+                if (this.seconds == 0 && this.minutes == 0) {
+                    this.$timer.stop('countdown');
+                }
             }
         }
     };
